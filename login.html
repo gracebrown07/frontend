@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eBook Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: transparent; 
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 1440px;
+      height: 1000px;
+      position: relative;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .background-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
+      filter: blur();
+    }
+
+    .form-card {
+      width: 450px;
+      height: 600px;
+      position: absolute;
+      background: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      left: 460px;
+      top: 200px;
+      padding: 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .title h1,
+    .sub-title p {
+      margin: 0 0 8px 0;
+      text-align: center;
+      font-family: 'Viaoda Libre', serif;
+    }
+
+    .word1, .word2 {
+      display: block;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .label {
+      color: #4D4D4D;
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .input {
+      padding: 8px;
+      background: white;
+      border-radius: 16px;
+      outline: 1px solid #DCD9D9;
+      outline-offset: -1px;
+    }
+
+    .input input {
+      width: 100%;
+      padding: 4px;
+      border: none;
+      font-size: 16px;
+      color: #4D4D4D;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .forgot-password {
+      text-align: right;
+      font-size: 16px;
+      color: #4D4D4D;
+      text-decoration: underline;
+    }
+
+    .login-btn {
+      padding: 20px;
+      background: #7FC9E9;
+      border-radius: 16px;
+      color: white;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .register-link {
+      text-align: right;
+      font-size: 16px;
+      font-weight: 700;
+      color: black;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="background-layer"></div>
+
+    <div class="form-card">
+      <div class="title">
+        <h1 style="font-size: 60px; color: black;">
+          <span class="word1">eBook</span>
+          <span class="word2">Library</span>
+        </h1>
+      </div>
+
+      <div class="sub-title">
+        <p style="color: #ABABAB; font-size: 20px;">Sign in to continue to eBook Library</p>
+      </div>
+
+      <form action="/submit" method="POST">
+        <div class="form-field">
+          <label for="email" class="label">Email</label>
+          <div class="input">
+            <input type="email" id="email" name="email" placeholder="username@ncl.ac.uk" required>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="password" class="label">Password</label>
+          <div class="input">
+            <input type="password" id="password" name="password" placeholder="********" required>
+          </div>
+        </div>
+
+        <div class="remember-me">
+          <input type="checkbox" id="remember-me" name="remember-me">
+          <label for="remember-me" style="color: #4D4D4D; font-size: 16px;">Remember me</label>
+        </div>
+
+        <div class="forgot-password">
+          <a href="forgotPassword.html" style="color: #7BB1C7; text-decoration: none;">Forgot Password?</a>
+        </div>        
+
+        <div class="login-btn">Login</div>
+
+        <p class="not-member">
+          Not a member? <a href="register.html" class="register-now">Register now</a>
+        </p>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
