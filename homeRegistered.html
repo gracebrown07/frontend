@@ -6,433 +6,408 @@
   <title>eBook Library</title>
   <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Inter:wght@400;700&family=Times+New+Roman&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
+body { /*Basic page setup: sets margins, font sizes, flex layout, and background color */
+  margin: 0; /* gives full control of the entire page */
+  font-size: 1rem; /*sets default size, can change individually if needed */ 
+  line-height: 1.6; /*sets default size, can change individually if needed */ 
+  height: 100vh; /* The website will always fill the whole page */
+  display: flex; /* Page will be flexible and responsive */
+  flex-direction: column; /* matches the natural flow of a website */
+  font-family: 'Viaoda Libre', serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box; /* Makes layout easier, without this it makes padding and borders add extra size */
+}
+
+.container {
+      flex: 1; /* Grow and fill available space */
+      display: flex; /* Page will be flexible and responsive */
+      flex-direction: column; /* matches the natural flow of a website */
+      overflow: hidden; /* Hides anything that spills over the sides */
     }
 
-    .container {
-      width: 1440px;
-      height: 1024px;
-      position: relative;
+header {
+      width: 100%; /* stretches across the entire width of the page */
       background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
-      overflow: hidden;
+      padding: 30px;
+      display: flex; /* control how child elements move */
+      justify-content: space-between; /* space nav bar */
+      align-items: center; 
     }
 
-    .content-box {
-      width: 1366px;
-      height: 1040px;
-      left: 36px;
-      top: 218px;
-      position: absolute;
-      border-radius: 10px;
-    }
-
-    .background-box {
-      width: 1437px;
-      height: 788px;
-      left: -34px;
-      top: 0px;
-      position: absolute;
-      background: #F3F3F7;
-    }
-
-    .title {
-      position: absolute;
-      top: 3%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #4D4D4D;
-      font-size: 32px;
-      font-family: 'Irish Grover', cursive;
-      font-weight: 400;
-      line-height: 41.13px;
-    }
-
-    .nav-container {
-      width: 1147px;
-      padding-left: 1px;
-      padding-right: 1px;
-      left: 226px;
-      top: 80px;
-      position: absolute;
-      justify-content: center;
-      align-items: center;
-      gap: 36px;
-      display: inline-flex;
-    }
-
-    .nav-item {
-      text-align: center;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-      color: #4D4D4D;
-      font-size: 32px;
-      font-family: 'Times New Roman', serif;
+    .title { /* e-book title */
+      font-size: 2rem;
       font-weight: 700;
-      line-height: 41.13px;
-    }
-
-    .search-bar {
-      width: 720px;
-      height: 74px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .search-background {
-      width: 720px;
-      height: 74px;
-      left: 0px;
-      top: 0px;
-      position: absolute;
-      background: white;
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-      border-top-left-radius: 40px;
-      border-top-right-radius: 31px;
-      border-bottom-left-radius: 40px;
-    }
-
-    .search-bar-background {
-      width: 137.36px;
-      height: 74px;
-      left: 0px;
-      top: 0px;
-      position: absolute;
-      background: #CBE8E8;
-      border-top-left-radius: 40px;
-      border-bottom-left-radius: 40px;
-    }
-
-    .search-button {
-      width: 35px;
-      height: 33px;
-      left: 658px;
-      top: 23px;
-      position: absolute;
-    }
-
-    .search-input {
-      position: absolute;
-      left: 168px;
-      top: 24px;
-      width: 500px;
-      height: 30px;
-      font-size: 24px;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: #333;
-    }
-
-    .browse-text {
-      width: 111px;
-      left: 20px;
-      top: 22px;
-      position: absolute;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 10px;
-      display: inline-flex;
       color: black;
-      font-size: 24px;
-      font-family: Inter;
-      font-weight: 400;
+      font-family: 'Viaoda Libre', serif;
     }
 
-    .arrow-icon {
-      font-size: 18px;
-      color: #4D4D4D;
-      margin-left: 5px;
+    .nav { /* navaigation bar container */
+      display: flex; /* nav items will be laid out in a row */
+      gap: 20px; /* gap between items */
+    }
+
+    .nav a, .menu-item > a { /* Targets all anchor links inside .nav and the direct <a> tags inside .menu-item for styling. */
+      text-decoration: none; /* removes underlining from links */
+      color: black;
+      font-size: 1.5rem;
+      display: flex; /* Icon and text are put in a flex container */
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 5px;
+      position: relative;
       cursor: pointer;
     }
 
-    .browse-dropdown {
-      width: 200px;
-      position: absolute;
-      top: 60px;
-      left: 35px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .nav a:hover, .menu-item > a:hover { /* This targets the anchor links in .nav and .menu-item when the user hovers over them. */
+      background-color: #6f9fbc;
     }
 
-    .browse-dropdown select {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      background-color: #f9f9f9;
-      border-radius: 5px;
+    .icon { /* This targets the div.icon inside each <a> to manage spacing between the icon and the text. */
+      margin-right: 8px;
+      margin-top: 4px;
     }
 
-    .browse-dropdown.show {
-      display: flex;
+    .arrow { /* Arrow next to Browse/User */
+      margin-left: 20px;
+      margin-top: 7px;
+      font-size: 1rem;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
     }
 
-    .admin-text {
-      width: 56px;
-      height: 26px;
-      left: 1345px;
-      top: 15px;
-      position: absolute;
-      text-align: center;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-      color: white;
-      font-size: 20px;
-      font-family: 'Times New Roman', serif;
-      font-weight: 400;
-      text-decoration: underline;
-      line-height: 25.70px;
-    }
-
-    .img-box {
-      width: 250px;
-      height: 220px;
-      border-radius: 34px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .book-container {
-      width: 1246px;
-      height: 920px;
-      left: 97px;
-      top: 283px;
-      position: absolute;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
-
-    .book-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 21px;
-      justify-content: flex-start;
-      width: 100%;
-    }
-
-    .book-item {
-      width: 160px;
-      height: 260px;
+    .menu-item { /* This targets the .menu-item class (used for "Browse" and "User") */
       position: relative;
-      background: white;
-      overflow: hidden;
-      border-radius: 10px;
     }
 
-    .book-img {
-      width: 123px;
-      height: 170px;
+    .dropdown { /* This targets the dropdown menu (div.dropdown) that appears when a user clicks on "Browse" or "User". */
+      display: none;
       position: absolute;
-      top: 16px;
-      left: 20px;
-      border-radius: 5px;
+      top: 100%;
+      left: 0;
+      background-color: #f3f3f7;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
     }
 
-    .book-details {
-      position: absolute;
-      left: 15px;
-      top: 198px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 5px;
+    .dropdown a { /*  This targets the anchor links inside the .dropdown (e.g., "Fiction", "Non-fiction"). */
+      color: #333;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
     }
 
-    .book-title {
-      width: 130px;
-      height: 14px;
-      color: #4D4D4D;
-      font-size: 12px;
-      font-family: Inter;
-      font-weight: 400;
-      line-height: 15.42px;
-      word-wrap: break-word;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .dropdown a:hover { /*This targets the dropdown links when the user hovers over them. */
+      background-color: #ddd;
     }
 
-    .book-author {
-      width: 101px;
-      height: 14px;
-      color: #4D4D4D;
-      font-size: 10px;
-      font-family: Inter;
-      font-weight: 400;
-      line-height: 12.85px;
-      word-wrap: break-word;
+    .menu-item > a.active .arrow { /* This targets the .arrow inside the active link (when a dropdown is open), rotates 180 degrees */
+      transform: rotate(180deg);
     }
 
-  </style>
+/* bottom content box */
+.content-box {
+  width: 100%; /* Allows width to be flexible on different screens */
+  max-width: 100vw;/* Ensure it doesn’t get too wide */
+  position: relative;  /* Position box without moving other things about */
+  background-color: #F3F3F7; /* Background colour is set to grey */
+  padding: 20px; /* Adds spacing inside the box */
+  display: flex; /* Control how items are arranged */
+  flex-direction: column; /* stack one on top of the other */
+  justify-content: center; /* Center the content */
+  flex: 1; /* Grow to fill available space */
+}
+
+.book-container { /* This is the outermost container that holds all the book items. */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; /* containers wrap onto new lines if they don't fit in a single row */
+  justify-content: center; /* centers items horizontally */
+  align-items: flex-start; /* Aligns items at the top */
+  padding-top: 20px; /* Adds some space at the top */
+  gap: 20px; /* gives consistency between spacing */
+}
+
+.book-box { /* This is the container for the individual book items. It is wrapped inside .book-container. */
+  width: 100%; /* takes up 100% of its parent */
+  display: flex;
+  flex-wrap: wrap; /* book items wrap onto new lines if they don't fit in a single row */
+  gap: 21px;
+  justify-content: center;
+  align-items: flex-start /* books are aligned properly */
+}
+
+.book-item { /* This represents each individual book within the layout. */
+  width: 12%; /* percentage instead of px makes it more responsive */
+  height: 260px;
+  position: relative;
+  background: white;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.book-img { /* Image inside representing book cover */
+  width: 123px;
+  height: 170px;
+  position: absolute;
+  top: 16px;
+  left: 22px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.book-details {
+  position: absolute;
+  left: 15px;
+  padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.book-title {
+  width: 130px;
+  height: 14px;
+  color: #4D4D4D;
+  font-size: 12px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-author {
+  width: 101px;
+  height: 14px;
+  color: #4D4D4D;
+  font-size: 10px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 15px;
+  word-wrap: break-word;
+}
+
+</style>
 </head>
 <body>
+  <!-- Main container that holds the whole page -->
   <div class="container">
-    <div class="content-box">
-      <div class="background-box"></div>
-      <div class="title">Explore your favourite eBook</div>
-    </div>
-
-    <div class="nav-container">
-      <div class="nav-item">Home</div>
-      <div class="search-bar">
-        <div class="search-background"></div>
-        <div class="search-bar-background"></div>
-        <img class="search-button" src="https://i.postimg.cc/Hx6rWjrz/Vector.png" />
-        <input type="text" class="search-input" placeholder="Search">
-        <div class="browse-text" onclick="toggleDropdown()">Browse
-          <span class="arrow-icon">&#9662;</span>
-        </div>
-        <div class="browse-dropdown" id="browseDropdown">
-          <select>
-            <option value="fiction">Fiction</option>
-            <option value="mystery">Mystery</option>
-            <option value="science">Science</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="history">History</option>
-            <option value="romance">Romance</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="admin-text">Admin</div>
-
-    <img class="img-box" src="https://i.postimg.cc/CL80vWLx/Screenshot-2025-04-11-131204.png" />
-
-    <div class="book-container">
-        <div class="book-box">
-          <div class="book-item">
-            <img class="book-img" src="https://www.gutenberg.org/cache/epub/43/pg43.cover.medium.jpg" />
-            <div class="book-details">
-              <div class="book-title">The Strange Case of Dr. Jekyll and Mr. Hyde</div>
-              <div class="book-author">Robert Louis Stevenson</div>
+    <!-- Header section (top of the page) -->
+    <header>
+      <!-- Website title -->
+      <div class="title" role="heading" aria-level="1">eBook Library</div>
+      <!-- Navigation bar -->
+      <nav class="nav" aria-label="Main navigation">
+      <!-- Browse menu item with dropdown -->
+      <div class="menu-item">
+        <a href="#" class="browse" aria-haspopup="true" aria-expanded="false">
+            <!-- Icon next to "Browse" -->
+            <div class="icon">
+              <img src="bars-solid.svg" alt="Browse Icon" width="20" height="20">
             </div>
+            Browse
+            <span class="arrow" aria-hidden="true">▼</span> <!-- Arrow indicating dropdown -->
+          </a>
+          <!-- Dropdown list under "Browse" -->
+          <div class="dropdown" aria-labelledby="browse">
+            <a href="#">Fiction</a>
+            <a href="#">Non-fiction</a>
+            <a href="#">Sci-fi</a>
           </div>
-  
-          <div class="book-item">
-            <img class="book-img" src="https://www.gutenberg.org/cache/epub/345/pg345.cover.medium.jpg" />
-            <div class="book-details">
-              <div class="book-title">Dracula</div>
-              <div class="book-author">Bram Stoker</div>
-            </div>
+        </div>
+        <!-- Link to Dashboard (no dropdown) -->
+        <a href="myBooks.html" class="Home" role="button">
+          <div class="icon">
+            <img src="house-solid.svg" alt="Home Icon" width="20" height="20">
           </div>
-  
-          <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/2554/pg2554.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">Crime and Punishment</div>
-                <div class="book-author">Fyodor Dostoyevsky</div>
-              </div>
+          Dashboard
+        </a>
+        <!-- User menu item with dropdown -->
+        <div class="menu-item">
+            <a href="#" class="Profile" aria-haspopup="true" aria-expanded="false">
+            <!-- Icon next to "User" -->
+            <div class="icon">
+              <img src="user-solid.svg" alt="Profile Icon" width="20" height="20">
             </div>
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">Pride and Prejudice</div>
-                <div class="book-author">Jane Austen</div>
+            User
+            <span class="arrow" aria-hidden="true">▼</span> <!-- Arrow indicating dropdown -->
+          </a>
+          <!-- Dropdown list under "User" -->
+          <div class="dropdown" aria-labelledby="user">
+            <a href="myDetails.html">My Details</a>
+            <a href="login-security.html">Login & Security</a>
+          </div>
+        </div>
+        <!-- Link to Sign Out (no dropdown) -->
+        <a href="login.html" class="Sign-out" role="button">
+          <div class="icon">
+            <img src="signout.svg" alt="Sign-out Icon" width="20" height="20">
+          </div>
+          Sign Out
+        </a>
+      </nav>
+    </header>
+    <!-- Main content area below the header -->
+    <main class="content-box">
+        <div class="book-container">
+            <div class="book-box">
+              <div class="book-item">
+                <img class="book-img" src="https://www.gutenberg.org/cache/epub/43/pg43.cover.medium.jpg" />
+                <div class="book-details">
+                  <div class="book-title">The Strange Case of Dr. Jekyll and Mr. Hyde</div>
+                  <div class="book-author">Robert Louis Stevenson</div>
+                </div>
               </div>
-            </div>
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/11/pg11.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">Alice's Adventures in Wonderland</div>
-                <div class="book-author">Lewis Carroll</div>
+      
+              <div class="book-item">
+                <img class="book-img" src="https://www.gutenberg.org/cache/epub/345/pg345.cover.medium.jpg" />
+                <div class="book-details">
+                  <div class="book-title">Dracula</div>
+                  <div class="book-author">Bram Stoker</div>
+                </div>
               </div>
-            </div>
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/64317/pg64317.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">The Great Gatsby</div>
-                <div class="book-author">F. Scott Fitzgerald</div>
-              </div>
-            </div>
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/36/pg36.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">The War of the Worlds</div>
-                <div class="book-author">H. G. Wells</div>
-              </div>
-            </div>
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/67098/pg67098.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">Winnie-the-Pooh</div>
-                <div class="book-author">A. A. Milne</div>
-              </div>
-            </div> 
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/1400/pg1400.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">Great Expectations</div>
-                <div class="book-author">Charles Dickens</div>
-              </div>
-            </div> 
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/1661/pg1661.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">The Adventures of Sherlock Holmes</div>
-                <div class="book-author">Arthur Conan Doyle</div>
-              </div>
-            </div> 
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/1184/pg1184.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">The Count of Monte Cristo</div>
-                <div class="book-author">Alexandre Dumas and Auguste Maquet</div>
-              </div>
-            </div> 
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/120/pg120.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">Treasure Island</div>
-                <div class="book-author">Robert Louis Stevenson</div>
-              </div>
-            </div>
-            
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/55/pg55.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">The Wonderful Wizard of Oz</div>
-                <div class="book-author">L. Frank Baum</div>
-              </div>
-            </div> 
-  
-            <div class="book-item">
-              <img class="book-img" src="https://www.gutenberg.org/cache/epub/829/pg829.cover.medium.jpg" />
-              <div class="book-details">
-                <div class="book-title">Gulliver's Travels into Several Remote Nations of the World</div>
-                <div class="book-author">Jonathan Swift</div>
-              </div>
-            </div> 
-      </div>
-    </div>
-  </div>
-
+      
+              <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/2554/pg2554.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">Crime and Punishment</div>
+                    <div class="book-author">Fyodor Dostoyevsky</div>
+                  </div>
+                </div>
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">Pride and Prejudice</div>
+                    <div class="book-author">Jane Austen</div>
+                  </div>
+                </div>
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/11/pg11.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">Alice's Adventures in Wonderland</div>
+                    <div class="book-author">Lewis Carroll</div>
+                  </div>
+                </div>
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/64317/pg64317.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">The Great Gatsby</div>
+                    <div class="book-author">F. Scott Fitzgerald</div>
+                  </div>
+                </div>
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/36/pg36.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">The War of the Worlds</div>
+                    <div class="book-author">H. G. Wells</div>
+                  </div>
+                </div>
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/67098/pg67098.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">Winnie-the-Pooh</div>
+                    <div class="book-author">A. A. Milne</div>
+                  </div>
+                </div> 
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1400/pg1400.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">Great Expectations</div>
+                    <div class="book-author">Charles Dickens</div>
+                  </div>
+                </div> 
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1661/pg1661.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">The Adventures of Sherlock Holmes</div>
+                    <div class="book-author">Arthur Conan Doyle</div>
+                  </div>
+                </div> 
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1184/pg1184.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">The Count of Monte Cristo</div>
+                    <div class="book-author">Alexandre Dumas and Auguste Maquet</div>
+                  </div>
+                </div> 
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/120/pg120.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">Treasure Island</div>
+                    <div class="book-author">Robert Louis Stevenson</div>
+                  </div>
+                </div>
+                
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/55/pg55.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">The Wonderful Wizard of Oz</div>
+                    <div class="book-author">L. Frank Baum</div>
+                  </div>
+                </div> 
+      
+                <div class="book-item">
+                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/829/pg829.cover.medium.jpg" />
+                  <div class="book-details">
+                    <div class="book-title">Gulliver's Travels into Several Remote Nations of the World</div>
+                    <div class="book-author">Jonathan Swift</div>
+                  </div>
+                </div> 
+    </main>
+  </div> <!-- End of .container -->
   <script>
-    function toggleDropdown() {
-      var dropdown = document.getElementById('browseDropdown');
-      dropdown.classList.toggle('show');
-    }
+    document.querySelectorAll('.menu-item > a').forEach(link => { /*  selects all the <a> elements that are direct children of elements with the .menu-item class. */
+      link.addEventListener('click', function(e) { /* This part watches for a "click" event on each link (like "Browse" or "User"). */
+        e.preventDefault(); /* stops browser from going to another page */
+
+        const isActive = this.classList.contains('active'); /* checks if downdown menu is already open */
+
+        // Close all dropdowns
+        document.querySelectorAll('.menu-item > a').forEach(a => { /* loops through links */
+          a.classList.remove('active'); /* closes all drop downs that are currently open */
+          if (a.nextElementSibling) {
+            a.nextElementSibling.style.display = 'none';
+          } /* close dropdown if sibling is open */
+        });
+
+        // Toggle current dropdown
+        if (!isActive) { /* dropdown is open */
+          this.classList.add('active');
+          if (this.nextElementSibling) {
+            this.nextElementSibling.style.display = 'block';
+          } /* makes dropdown visible */
+        }
+      });
+    });
+
+    // Close dropdown if you click outside
+    document.addEventListener('click', function(e) { /* listens for click outside dropdown */
+      if (!e.target.closest('.menu-item')) { /* checks if click was outside */
+        document.querySelectorAll('.menu-item > a').forEach(a => {
+          a.classList.remove('active');
+          if (a.nextElementSibling) {
+            a.nextElementSibling.style.display = 'none';
+          } /* If the click is outside, it runs the same code as earlier to close all dropdowns */
+        });
+      }
+    });
   </script>
 </body>
 </html>
