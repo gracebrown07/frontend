@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>My Details</title>
   <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Inter:wght@400;700&family=Times+New+Roman&display=swap" rel="stylesheet">
   <style>
 body { /*Basic page setup: sets margins, font sizes, flex layout, and background color */
@@ -116,83 +116,180 @@ header {
   padding: 20px; /* Adds spacing inside the box */
   display: flex; /* Control how items are arranged */
   flex-direction: column; /* stack one on top of the other */
-  justify-content: center; /* Center the content */
+  justify-content: flex-start; /* Aligns to the top */
   flex: 1; /* Grow to fill available space */
 }
 
-.book-container { /* This is the outermost container that holds all the book items. */
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap; /* containers wrap onto new lines if they don't fit in a single row */
-  justify-content: center; /* centers items horizontally */
-  align-items: flex-start; /* Aligns items at the top */
-  padding-top: 20px; /* Adds some space at the top */
-  gap: 20px; /* gives consistency between spacing */
+/* My Details Title */
+.content-box h1 { 
+  width: 100%;  
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 20px; /* Adds some space below the title */
+  text-align: center; /* centred within h1 */
 }
 
-.book-box { /* This is the container for the individual book items. It is wrapped inside .book-container. */
-  width: 100%; /* takes up 100% of its parent */
+/* container that holds all of the user profile information */
+.profile-box {
+  width: 100%;  /* Full width of its container */
+  max-width: 1200px; /* Limit the max width for a better look */
+  margin: 0 auto; /* Center the box horizontally */
+  padding: 20px;
+  height: 650px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Label that says 'My Profile' */
+.profile-picture-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 15px; /* Adds space below the label */
+  margin-top: 35px; /* adds space above */
+  text-align: center; /* Centers the text */
+}
+
+/* The circle box that has 'Add Picture' */
+.profile-picture {
+  width: 120px; /* Slightly larger than before for better visibility */
+  height: 120px; /* Maintains aspect ratio */
+  background: #D9D9D9;
+  border-radius: 50%;
   display: flex;
-  flex-wrap: wrap; /* book items wrap onto new lines if they don't fit in a single row */
-  gap: 21px;
   justify-content: center;
-  align-items: flex-start /* books are aligned properly */
-}
-
-.book-item { /* This represents each individual book within the layout. */
-  width: 12%; /* percentage instead of px makes it more responsive */
-  height: 260px;
-  position: relative;
-  background: white;
+  align-items: center;
+  cursor: pointer;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  margin: 0 auto; /* Centers the profile picture horizontally */
+  position: relative; /* Positions relative to the container */
 }
 
-.book-img { /* Image inside representing book cover */
-  width: 123px;
-  height: 170px;
-  position: absolute;
-  top: 16px;
-  left: 22px;
-  border-radius: 5px;
+/* Profile Picuture image once its added */
+.profile-picture img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.book-details {
-  position: absolute;
-  left: 15px;
-  padding-top: 200px;
+/* when button is clicked it takes you to files to select a picture */
+.profile-picture input[type="file"] {
+  display: none;
+}
+
+/* Text inside box before photo has been added */
+.profile-picture-text {
+  font-size: 14px;
+  color: #4C535F;
+  text-align: center;
+  position: absolute; /* Ensures it's centered inside the circle */
+  width: 100%;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Adds subtle shadow to improve visibility on light backgrounds */
+}
+
+/* Profile section as flex container */
+/* Profile section - Flex container with space between columns */
+.profile-details {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 5px;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 24px; /* Space between left and right columns */
+  justify-content: flex-start; /* Ensure the items are aligned to the left */
+  margin-top: 20px;
 }
 
-.book-title {
-  width: 130px;
-  height: 14px;
-  color: #4D4D4D;
-  font-size: 12px;
-  font-family: Inter;
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* Left and right sections */
+.details-left, .details-right {
+  flex: 1;
+  min-width: 280px; /* Ensure columns don't get too narrow */
+  box-sizing: border-box; /* Prevent overflow */
 }
 
-.book-author {
-  width: 101px;
-  height: 14px;
-  color: #4D4D4D;
-  font-size: 10px;
-  font-family: Inter;
+/* Group for input fields */
+.details-group {
+  margin-bottom: 16px; /* Adds space between input fields */
+}
+
+/* Styling for input fields */
+.input-box {
+  width: 100%; /* Ensures the input box takes full width of its container */
+  height: 52px;
+  padding: 0 15px;
+  background: #FAFBFC;
+  border: 1px solid #E0E4EC;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #4C535F;
+  font-weight: 500;
+}
+
+.input-box:focus {
+  outline: none;
+  border-color: #8CD9E3;
+  box-shadow: 0 0 0 2px rgba(140, 217, 227, 0.4);
+}
+
+/* Label styling */
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4C535F;
+}
+
+/* Placeholder styling */
+.input-box::placeholder {
+  color: #B0B0B0;
   font-weight: 400;
-  line-height: 15px;
-  word-wrap: break-word;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  align-items: center; /* align them nicely vertically */
+  gap: 16px; /* space between Reset and Update */
+  margin-top: 24px; /* space above the buttons */
+}
+
+
+/* Update Button styling */
+.button-update {
+  width: 201px;
+  height: 37px;
+  background-color: #F4683C;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Reset Button styling */
+.button-reset-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #4C535F;
+  cursor: pointer; /* make it look clickable */
+  align-self: center; /* ← this aligns it vertically with the button */
+  margin-top: 0; /* ← remove the old margin pushing it too high */
+}
+
+.button-reset {
+  background: none;
+  border: none;
+  color: #4C535F;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 37px; /* Match height to Update button */
+  display: flex;
+  align-items: center;
 }
 
 </style>
@@ -224,7 +321,7 @@ header {
           </div>
         </div>
         <!-- Link to Dashboard (no dropdown) -->
-        <a href="myBooks.html" class="Home" role="button">
+        <a href="homeRegistered.html" class="Home" role="button">
           <div class="icon">
             <img src="house-solid.svg" alt="Home Icon" width="20" height="20">
           </div>
@@ -257,120 +354,50 @@ header {
     </header>
     <!-- Main content area below the header -->
     <main class="content-box">
-        <div class="book-container">
-            <div class="book-box">
-              <div class="book-item">
-                <img class="book-img" src="https://www.gutenberg.org/cache/epub/43/pg43.cover.medium.jpg" />
-                <div class="book-details">
-                  <div class="book-title">The Strange Case of Dr. Jekyll and Mr. Hyde</div>
-                  <div class="book-author">Robert Louis Stevenson</div>
-                </div>
-              </div>
+        <h1>MY DETAILS</h1> <!-- Title -->
+      <!-- Profile Box with Picture Section -->
+    <section class="profile-box">
+          <div class="profile-picture-label">Your Profile Picture</div>
+          <div class="profile-picture" onclick="document.getElementById('profile-picture-input').click();">
+            <input type="file" id="profile-picture-input" accept="image/*" onchange="previewImage(event)">
+            <span class="profile-picture-text">Add Picture</span>
+          </div>
+        
       
-              <div class="book-item">
-                <img class="book-img" src="https://www.gutenberg.org/cache/epub/345/pg345.cover.medium.jpg" />
-                <div class="book-details">
-                  <div class="book-title">Dracula</div>
-                  <div class="book-author">Bram Stoker</div>
-                </div>
-              </div>
+        <!-- Profile Details Section -->
+        <section class="profile-details">
+          <div class="details-left">
+            <div class="details-group">
+              <label class="label" for="full-name">Full name</label>
+              <input class="input-box" id="full-name" type="text" placeholder="Reinhard Kenson" />
+            </div>
+            <div class="details-group">
+              <label class="label" for="register-number">Register Number</label>
+              <input class="input-box" id="register-number" type="text" placeholder="12345678" />
+            </div>
+          </div>
       
-              <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/2554/pg2554.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Crime and Punishment</div>
-                    <div class="book-author">Fyodor Dostoyevsky</div>
-                  </div>
-                </div>
+          <div class="details-right">
+            <div class="details-group">
+              <label class="label" for="email">Email</label>
+              <input class="input-box" id="email" type="email" placeholder="username@ncl.ac.uk" />
+            </div>
+            <div class="details-group">
+              <label class="label" for="phone-number">Phone number</label>
+              <input class="input-box" id="phone-number" type="tel" placeholder="+44 9952508995" />
+            </div>
+          </div>
+    </section>
+   
       
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Pride and Prejudice</div>
-                    <div class="book-author">Jane Austen</div>
-                  </div>
-                </div>
+        <!-- Buttons for updating and resetting profile -->
+        <div style="display: flex; gap: 16px; margin-top: 24px;">
+            <div class="button-update">Update</div>
+            <button class="button-reset">Reset</button>
+          </div>                         
+        </section>
+      </main>
       
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/11/pg11.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Alice's Adventures in Wonderland</div>
-                    <div class="book-author">Lewis Carroll</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/64317/pg64317.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Great Gatsby</div>
-                    <div class="book-author">F. Scott Fitzgerald</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/36/pg36.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The War of the Worlds</div>
-                    <div class="book-author">H. G. Wells</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/67098/pg67098.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Winnie-the-Pooh</div>
-                    <div class="book-author">A. A. Milne</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1400/pg1400.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Great Expectations</div>
-                    <div class="book-author">Charles Dickens</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1661/pg1661.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Adventures of Sherlock Holmes</div>
-                    <div class="book-author">Arthur Conan Doyle</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1184/pg1184.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Count of Monte Cristo</div>
-                    <div class="book-author">Alexandre Dumas and Auguste Maquet</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/120/pg120.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Treasure Island</div>
-                    <div class="book-author">Robert Louis Stevenson</div>
-                  </div>
-                </div>
-                
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/55/pg55.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Wonderful Wizard of Oz</div>
-                    <div class="book-author">L. Frank Baum</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/829/pg829.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Gulliver's Travels into Several Remote Nations of the World</div>
-                    <div class="book-author">Jonathan Swift</div>
-                  </div>
-                </div> 
-    </main>
   </div> <!-- End of .container -->
   <script>
      document.querySelectorAll('.menu-item > a').forEach(link => { 

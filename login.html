@@ -6,25 +6,30 @@
   <title>eBook Library</title>
   <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
   <style>
+    /* Body and global layout */
     body {
       font-family: 'Inter', sans-serif;
-      background: transparent; 
+      background: transparent;
       margin: 0;
       padding: 0;
-      display: flex;
+      display: flex;  /* Flexbox to center content */
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
-
-    .container {
-      width: 1440px;
-      height: 1000px;
-      position: relative;
-      background: transparent;
       overflow: hidden;
     }
 
+    /* Container for the entire form */
+    .container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Background layer with gradient effect */
     .background-layer {
       position: absolute;
       width: 100%;
@@ -32,78 +37,85 @@
       top: 0;
       left: 0;
       background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
-      filter: blur();
+      filter: blur();  /* Adds blur effect to the background */
+      z-index: -1;  /* Keeps the background behind the form */
     }
 
+    /* Form card styling */
     .form-card {
       width: 450px;
-      height: 600px;
-      position: absolute;
+      height: 620px;
       background: white;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);  /* Adds a subtle shadow */
       border-radius: 20px;
-      left: 460px;
-      top: 200px;
-      padding: 20px 40px;
+      padding: 20px 50px;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .title h1,
-    .sub-title p {
-      margin: 0 0 8px 0;
+    /* Title Section */
+    .title h1 {
+      margin: 20px 0 8px 0;  /* Margin for spacing */
       text-align: center;
       font-family: 'Viaoda Libre', serif;
+      font-size: 60px;  /* Large font for the title */
+      color: black;
     }
 
-    .word1, .word2 {
-      display: block;
+    /* Subtitle Section */
+    .sub-title p {
+      color: #ABABAB;
+      font-size: 16px;  /* Smaller font for subtitle */
+      text-align: center;
+      margin: 0;
     }
 
+    /* Form fields styling */
     .form-field {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;  /* Space between input fields */
     }
 
+    .form-field input {
+      padding: 14px;  /* Padding inside the input fields */
+      background: white;
+      border-radius: 14px;
+      outline: none;
+      border: 1px solid #DCD9D9;
+      width: 100%;
+      font-size: 16px;  /* Font size for the input text */
+      margin-left: -15px;  /* Moves input left to align with the label */
+    }
+
+    /* Label styling */
     .label {
       color: #4D4D4D;
-      font-size: 24px;
-      font-weight: 600;
-      margin-top: 10px;
-    }
-
-    .input {
-      padding: 8px;
-      background: white;
-      border-radius: 16px;
-      outline: 1px solid #DCD9D9;
-      outline-offset: -1px;
-    }
-
-    .input input {
-      width: 100%;
-      padding: 4px;
-      border: none;
       font-size: 16px;
-      color: #4D4D4D;
+      font-weight: 600;
+      margin-top: 30px;  /* Space above labels */
+      margin-left: -15px;  /* Moves label slightly left for better alignment */
     }
 
+    /* Remember me checkbox styling */
     .remember-me {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 15px;  /* Space above the checkbox */
     }
 
+    /* Forgot password link */
     .forgot-password {
       text-align: right;
       font-size: 16px;
       color: #4D4D4D;
       text-decoration: underline;
+      margin-top: 10px;  /* Space above the forgot password link */
     }
 
+    /* Login button styling */
     .login-btn {
       padding: 20px;
       background: #7FC9E9;
@@ -112,65 +124,70 @@
       font-weight: 600;
       text-align: center;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 50px;  /* Space above the login button */
     }
 
+    /* Register link styling */
     .register-link {
       text-align: right;
       font-size: 16px;
       font-weight: 700;
       color: black;
-      margin-top: 20px;
+      margin-top: 50px;  /* Space above the register link */
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Background layer -->
     <div class="background-layer"></div>
 
+    <!-- Form card container -->
     <div class="form-card">
+      <!-- Title Section -->
       <div class="title">
-        <h1 style="font-size: 60px; color: black;">
-          <span class="word1">eBook</span>
-          <span class="word2">Library</span>
-        </h1>
+        <h1>eBook Library</h1> <!-- Main title of the form -->
       </div>
 
+      <!-- Subtitle Section -->
       <div class="sub-title">
-        <p style="color: #ABABAB; font-size: 20px;">Sign in to continue to eBook Library</p>
+        <p>Sign in to continue to eBook Library</p> <!-- Subtitle text -->
       </div>
 
+      <!-- Form -->
       <form action="/submit" method="POST">
+        <!-- Email input -->
         <div class="form-field">
-          <label for="email" class="label">Email</label>
-          <div class="input">
-            <input type="email" id="email" name="email" placeholder="username@ncl.ac.uk" required>
-          </div>
+          <label for="email" class="label">Email</label> <!-- Email label -->
+          <input type="email" id="email" name="email" placeholder="username@ncl.ac.uk" required> <!-- Email input field -->
         </div>
 
+        <!-- Password input -->
         <div class="form-field">
-          <label for="password" class="label">Password</label>
-          <div class="input">
-            <input type="password" id="password" name="password" placeholder="********" required>
-          </div>
+          <label for="password" class="label">Password</label> <!-- Password label -->
+          <input type="password" id="password" name="password" placeholder="********" required> <!-- Password input field -->
         </div>
 
+        <!-- Remember me checkbox -->
         <div class="remember-me">
-          <input type="checkbox" id="remember-me" name="remember-me">
-          <label for="remember-me" style="color: #4D4D4D; font-size: 16px;">Remember me</label>
+          <input type="checkbox" id="remember-me" name="remember-me"> <!-- Remember me checkbox -->
+          <label for="remember-me">Remember me</label> <!-- Checkbox label -->
         </div>
 
+        <!-- Forgot password link -->
         <div class="forgot-password">
-          <a href="forgotPassword.html" style="color: #7BB1C7; text-decoration: none;">Forgot Password?</a>
-        </div>        
-
-        <div class="login-btn">Login</div>
-
-        <p class="not-member">
-          Not a member? <a href="register.html" class="register-now">Register now</a>
-        </p>
-
+          <a href="forgotPassword.html">Forgot Password?</a> <!-- Forgot password link -->
         </div>
+
+        <!-- Login button -->
+        <div class="login-btn">
+          <a href="homeRegistered.html">Login</a> <!-- Login button/link -->
+        </div>
+
+        <!-- Register link -->
+        <p class="not-member">
+          Not a member? <a href="register.html" class="register-now">Register now</a> <!-- Register link for new members -->
+        </p>
       </form>
     </div>
   </div>

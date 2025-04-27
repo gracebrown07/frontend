@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Security</title>
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Inter:wght@400;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+  <style>
+    /* Basic page setup: sets margins, font sizes, flex layout, and background color */
+    body { 
+      margin: 0; /* gives full control of the entire page */
+      font-size: 1rem; /* sets default font size */
+      line-height: 1.6; /* adjusts line height for readability */
+      height: 100vh; /* Ensures the page fills the entire screen */
+      display: flex; /* Page will be flexible and responsive */
+      flex-direction: column; /* Matches the natural flow of the page */
+      font-family: 'Viaoda Libre', serif; /* Sets the page font */
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box; /* Makes layout easier, avoids adding extra size from padding or borders */
+    }
+
+    /* Container to hold all content */
+    .container {
+      flex: 1; /* Makes container grow and fill available space */
+      display: flex; /* Page will be flexible */
+      flex-direction: column; /* Matches the natural flow of a website */
+      overflow: hidden; /* Hides any overflow content */
+    }
+
+    /* Header section (top of the page) */
+    header {
+      width: 100%; /* Stretches across the full width */
+      background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%); /* Gradient background */
+      padding: 30px;
+      display: flex; /* Controls how child elements move */
+      justify-content: space-between; /* Spreads out navigation links */
+      align-items: center; 
+    }
+
+    /* eBook title styling */
+    .title { 
+      font-size: 2rem;
+      font-weight: 700;
+      color: black;
+      font-family: 'Viaoda Libre', serif; 
+    }
+
+    /* Navigation bar styling */
+    .nav { 
+      display: flex; /* Navigation items will be laid out in a row */
+      gap: 20px; /* Adds space between nav items */
+    }
+
+    .nav a, .menu-item > a { 
+      text-decoration: none; /* Removes underlines from links */
+      color: black;
+      font-size: 1.5rem;
+      display: flex; /* Aligns icon and text in one row */
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 5px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav a:hover, .menu-item > a:hover { 
+      background-color: #6f9fbc; /* Changes color when hovered */
+    }
+
+    .icon { 
+      margin-right: 8px; /* Adds space between icon and text */
+      margin-top: 4px;
+    }
+
+    .arrow { 
+      margin-left: 20px;
+      margin-top: 7px;
+      font-size: 1rem;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
+    }
+
+    /* Dropdown menu styling */
+    .menu-item { 
+      position: relative;
+    }
+
+    .dropdown { 
+      display: none; /* Hides the dropdown by default */
+      position: absolute;
+      top: 100%; 
+      left: 0;
+      background-color: #f3f3f7;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+      z-index: 1;
+    }
+
+    .dropdown a { 
+      color: #333;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover { 
+      background-color: #ddd; /* Changes background color when hovered */
+    }
+
+    .menu-item > a.active .arrow { 
+      transform: rotate(180deg); /* Rotates arrow when dropdown is open */
+    }
+
+    /* Styling for bottom content box */
+    .content-box {
+      width: 100%;
+      max-width: 100vw; 
+      position: relative;
+      background-color: #F3F3F7;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+    /* Profile box container styling */
+    .profile-box {
+      width: 100%; 
+      max-width: 500px;
+      margin: 0 auto; 
+      padding: 20px;
+      height: auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Profile section title styling */
+    .content-box h1 { 
+      width: 100%;
+      font-size: 2rem;
+      font-weight: 700;
+      color: black;
+      margin-top: -60px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Input group styling */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 100px;
+    }
+
+    .input-group label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* Input fields styling */
+    .input-group input {
+      padding: 12px;
+      border: 1px solid #E0E4EC;
+      border-radius: 8px;
+      background: #FAFBFC;
+      font-size: 16px;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Button container styling */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 16px; 
+      margin-top: auto;
+    }
+
+    /* Update Button styling */
+    .button-update {
+      width: 201px;
+      height: 37px;
+      background-color: #F4683C;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Reset Button styling */
+    .button-reset-text {
+      font-size: 18px;
+      font-weight: 500;
+      color: #4C535F;
+      cursor: pointer;
+      align-self: center;
+      margin-top: 0;
+    }
+
+    .button-reset {
+      background: none;
+      border: none;
+      color: #4C535F;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      height: 37px;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main container for all content -->
+  <div class="container">
+    <!-- Header section with navigation links -->
+    <header>
+      <!-- eBook title -->
+      <div class="title" role="heading" aria-level="1">eBook Library</div>
+      <!-- Navigation bar -->
+      <nav class="nav" aria-label="Main navigation">
+        <!-- Browse menu item with dropdown -->
+        <div class="menu-item">
+          <a href="#" class="browse" aria-haspopup="true" aria-expanded="false" aria-labelledby="browse-dropdown">
+            <div class="icon">
+              <img src="bars-solid.svg" alt="Browse Icon" width="20" height="20">
+            </div>
+            Browse
+            <span class="arrow" aria-hidden="true">▼</span>
+          </a>
+          <div id="browse-dropdown" class="dropdown" aria-labelledby="browse">
+            <a href="#">Fiction</a>
+            <a href="#">Non-fiction</a>
+            <a href="#">Sci-fi</a>
+          </div>
+        </div>
+        <!-- Dashboard link (no dropdown) -->
+        <a href="myBooks.html" class="Home" role="button">
+          <div class="icon">
+            <img src="house-solid.svg" alt="Home Icon" width="20" height="20">
+          </div>
+          Dashboard
+        </a>
+        <!-- User menu item with dropdown -->
+        <div class="menu-item">
+          <a href="#" class="Profile" aria-haspopup="true" aria-expanded="false" aria-labelledby="user-dropdown">
+            <div class="icon">
+              <img src="user-solid.svg" alt="Profile Icon" width="20" height="20">
+            </div>
+            User
+            <span class="arrow" aria-hidden="true">▼</span>
+          </a>
+          <div id="user-dropdown" class="dropdown" aria-labelledby="user">
+            <a href="myDetails.html">My Details</a>
+            <a href="login-security.html">Login & Security</a>
+          </div>
+        </div>
+        <!-- Sign out link (no dropdown) -->
+        <a href="login.html" class="Sign-out" role="button">
+          <div class="icon">
+            <img src="signout.svg" alt="Sign-out Icon" width="20" height="20">
+          </div>
+          Sign Out
+        </a>
+      </nav>
+    </header>
+    
+
+    <!-- Main content area -->
+    <main class="content-box">
+      <h1>LOGIN & SECURITY</h1>
+      <div class="profile-box">
+        <!-- Input fields for updating password -->
+        <div class="input-group">
+          <label for="current-password">Current Password</label>
+          <input type="password" id="current-password" placeholder="Enter Current Password">
+
+          <label for="new-password">New Password</label>
+          <input type="password" id="new-password" placeholder="Enter New Password">
+
+          <label for="retype-password">Retype Password</label>
+          <input type="password" id="retype-password" placeholder="Retype New Password">
+        </div>
+
+        <!-- Update and Reset buttons -->
+        <div class="button-container">
+          <button class="button-update" type="button">Update</button>
+          <button class="button-reset">Reset</button>
+        </div>   
+      </div>
+    </main>
+  </div> 
+
+  <script>
+    document.querySelectorAll('.menu-item > a').forEach(link => { 
+  link.addEventListener('click', function(e) { 
+    e.preventDefault(); // Prevents default action (e.g., following the link)
+
+    const isActive = this.classList.contains('active'); // Checks if the link is active
+
+    // Close all dropdowns
+    document.querySelectorAll('.menu-item > a').forEach(a => {
+      a.classList.remove('active'); // Remove the 'active' class
+      if (a.nextElementSibling) {
+        a.nextElementSibling.style.display = 'none'; // Hide the dropdown
+        a.setAttribute('aria-expanded', 'false'); // Set aria-expanded to false
+      }
+    });
+
+    // Toggle the current dropdown
+    if (!isActive) { 
+      this.classList.add('active'); // Add 'active' class to indicate the dropdown is open
+      if (this.nextElementSibling) {
+        this.nextElementSibling.style.display = 'block'; // Show the dropdown
+        this.setAttribute('aria-expanded', 'true'); // Set aria-expanded to true
+      }
+    }
+  });
+});
+
+// Close dropdown if clicked outside
+document.addEventListener('click', function(e) { 
+  if (!e.target.closest('.menu-item')) { 
+    document.querySelectorAll('.menu-item > a').forEach(a => {
+      a.classList.remove('active'); // Remove the 'active' class
+      if (a.nextElementSibling) {
+        a.nextElementSibling.style.display = 'none'; // Hide the dropdown
+        a.setAttribute('aria-expanded', 'false'); // Set aria-expanded to false
+      }
+    });
+  }
+});
+
+  </script>
+</body>
+</html>
