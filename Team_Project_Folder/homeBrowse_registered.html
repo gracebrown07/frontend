@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eBook Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Inter:wght@400;700&family=Times+New+Roman&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .container {
+      width: 1440px;
+      height: 1024px;
+      position: relative;
+      background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
+      overflow: hidden;
+    }
+
+    .content-box {
+      width: 1366px;
+      height: 1040px;
+      position: absolute;
+      top: 218px;
+      left: 36px;
+      border-radius: 10px;
+      z-index: 2;
+    }
+
+    .background-box {
+      width: 1437px;
+      height: 788px;
+      left: -34px;
+      top: 0px;
+      position: absolute;
+      background: #F3F3F7;
+    }
+
+    .nav-container {
+      position: absolute;
+      left: 250px; /* was 226px — reduce this value */
+      top: 80px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+    }
+
+
+    .nav-item {
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      color: #4D4D4D;
+      font-size: 32px;
+      font-family: 'Times New Roman', serif;
+      font-weight: 700;
+      line-height: 41.13px;
+    }
+
+    .search-bar {
+      width: 720px;
+      height: 74px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .search-background {
+      width: 720px;
+      height: 74px;
+      left: 0px;
+      top: 0px;
+      position: absolute;
+      background: white;
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+      border-top-left-radius: 40px;
+      border-top-right-radius: 31px;
+      border-bottom-left-radius: 40px;
+    }
+
+    .search-bar-background {
+      width: 137.36px;
+      height: 74px;
+      left: 0px;
+      top: 0px;
+      position: absolute;
+      background: #CBE8E8;
+      border-top-left-radius: 40px;
+      border-bottom-left-radius: 40px;
+    }
+
+    .search-button {
+      width: 35px;
+      height: 33px;
+      left: 658px;
+      top: 23px;
+      position: absolute;
+    }
+
+    .search-input {
+      position: absolute;
+      left: 168px;
+      top: 24px;
+      width: 500px;
+      height: 30px;
+      font-size: 24px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #333;
+    }
+
+    .browse-text {
+      width: 111px;
+      left: 20px;
+      top: 22px;
+      position: absolute;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      display: inline-flex;
+      color: black;
+      font-size: 24px;
+      font-family: Inter;
+      font-weight: 400;
+    }
+
+    .arrow-icon {
+      font-size: 18px;
+      color: #4D4D4D;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .browse-dropdown {
+      width: 200px;
+      position: absolute;
+      top: 60px;
+      left: 35px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .browse-dropdown select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    .browse-dropdown.show {
+      display: flex;
+    }
+
+    .admin-text {
+      width: 56px;
+      height: 26px;
+      left: 1345px;
+      top: 15px;
+      position: absolute;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      font-size: 20px;
+      font-family: 'Times New Roman', serif;
+      font-weight: 400;
+      text-decoration: underline;
+      line-height: 25.70px;
+    }
+
+    .img-box {
+      width: 250px;
+      height: 220px;
+      border-radius: 34px;
+      position: absolute;
+      top: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+
+
+    .header-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  padding-top: 20px; /* Push it down a bit inside the grey box */
+  position: relative;
+  z-index: 2;
+}
+
+.header-menu-item {
+  text-align: center;
+  min-width: 120px;
+  font-size: 14px;
+  color: #4D4D4D;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+    .title-cover { left: 47px; }
+    .brief-desc { left: 304.73px; width: 202.96px;  }
+    .rates-reviews { left: 638.71px; width: 200.82px; }
+    .categories { left: 928.65px; width: 133.16px;  }
+    .availability { left: 1162px; width: 131px; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content-box">
+        <div class="background-box"></div>
+        <div class="header-menu">
+          <div class="header-menu-item title-cover">Title & Cover</div>
+          <div class="header-menu-item brief-desc">Brief Description</div>
+          <div class="header-menu-item rates-reviews">Rates & Reviews</div>
+          <div class="header-menu-item categories">Categories</div>
+          <div class="header-menu-item availability">Availability</div>
+        </div>
+      </div>
+      
+
+    <div class="nav-container">
+      <div class="nav-item">Home</div>
+
+      <div class="search-bar">
+        <div class="search-background"></div>
+        <div class="search-bar-background"></div>
+        <input type="text" class="search-input" placeholder="Search" />
+        <img class="search-button" src="https://i.postimg.cc/Hx6rWjrz/Vector.png" alt="Search" />
+        <div class="browse-text" onclick="toggleDropdown()">Browse
+          <span class="arrow-icon">&#9662;</span>
+        </div>
+        <div class="browse-dropdown" id="browseDropdown">
+          <select>
+            <option value="fiction">Fiction</option>
+            <option value="mystery">Mystery</option>
+            <option value="science">Science</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="history">History</option>
+            <option value="romance">Romance</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="admin-text">Admin</div>
+    <img class="img-box" src="https://i.postimg.cc/CL80vWLx/Screenshot-2025-04-11-131204.png" alt="Dashboard Preview" />
+
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById('browseDropdown');
+      dropdown.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

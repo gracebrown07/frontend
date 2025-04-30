@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eBook Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+  <style>
+    /* Body and global layout */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: transparent;
+      margin: 0;
+      padding: 0;
+      display: flex;  /* Flexbox to center content */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Container for the entire form */
+    .container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Background layer with gradient effect */
+    .background-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
+      filter: blur();  /* Adds blur effect to the background */
+      z-index: -1;  /* Keeps the background behind the form */
+    }
+
+    /* Form card styling */
+    .form-card {
+      width: 450px;
+      height: 620px;
+      background: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);  /* Adds a subtle shadow */
+      border-radius: 20px;
+      padding: 20px 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Title Section */
+    .title h1 {
+      margin: 20px 0 8px 0;  /* Margin for spacing */
+      text-align: center;
+      font-family: 'Viaoda Libre', serif;
+      font-size: 60px;  /* Large font for the title */
+      color: black;
+    }
+
+    /* Subtitle Section */
+    .sub-title p {
+      color: #ABABAB;
+      font-size: 16px;  /* Smaller font for subtitle */
+      text-align: center;
+      margin: 0;
+    }
+
+    /* Form fields styling */
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;  /* Space between input fields */
+    }
+
+    .form-field input {
+      padding: 14px;  /* Padding inside the input fields */
+      background: white;
+      border-radius: 14px;
+      outline: none;
+      border: 1px solid #DCD9D9;
+      width: 100%;
+      font-size: 16px;  /* Font size for the input text */
+      margin-left: -15px;  /* Moves input left to align with the label */
+    }
+
+    /* Label styling */
+    .label {
+      color: #4D4D4D;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 30px;  /* Space above labels */
+      margin-left: -15px;  /* Moves label slightly left for better alignment */
+    }
+
+    /* Remember me checkbox styling */
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;  /* Space above the checkbox */
+    }
+
+    /* Forgot password link */
+    .forgot-password {
+      text-align: right;
+      font-size: 16px;
+      color: #4D4D4D;
+      text-decoration: underline;
+      margin-top: 10px;  /* Space above the forgot password link */
+    }
+
+    /* Login button styling */
+    .login-btn {
+      padding: 20px;
+      background: #7FC9E9;
+      border-radius: 16px;
+      color: white;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 50px;  /* Space above the login button */
+    }
+
+    /* Register link styling */
+    .register-link {
+      text-align: right;
+      font-size: 16px;
+      font-weight: 700;
+      color: black;
+      margin-top: 50px;  /* Space above the register link */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Background layer -->
+    <div class="background-layer"></div>
+
+    <!-- Form card container -->
+    <div class="form-card">
+      <!-- Title Section -->
+      <div class="title">
+        <h1>eBook Library</h1> <!-- Main title of the form -->
+      </div>
+
+      <!-- Subtitle Section -->
+      <div class="sub-title">
+        <p>Sign in to continue to eBook Library</p> <!-- Subtitle text -->
+      </div>
+
+      <!-- Form -->
+      <form action="/submit" method="POST">
+        <!-- Email input -->
+        <div class="form-field">
+          <label for="username" class="label">Username</label> <!-- Email label -->
+          <input type="username" id="email" name="username" placeholder="John_Smith123" required> <!-- Email input field -->
+        </div>
+
+        <!-- Password input -->
+        <div class="form-field">
+          <label for="password" class="label">Password</label> <!-- Password label -->
+          <input type="password" id="password" name="password" placeholder="********" required> <!-- Password input field -->
+        </div>
+
+        <!-- Remember me checkbox -->
+        <div class="remember-me">
+          <input type="checkbox" id="remember-me" name="remember-me"> <!-- Remember me checkbox -->
+          <label for="remember-me">Remember me</label> <!-- Checkbox label -->
+        </div>
+
+        <!-- Forgot password link -->
+        <div class="forgot-password">
+          <a href="forgotPassword.html">Forgot Password?</a> <!-- Forgot password link -->
+        </div>
+
+        <!-- Login button -->
+        <div class="login-btn">
+          <a href="homeRegistered.html">Login</a> <!-- Login button/link -->
+        </div>
+
+        <!-- Register link -->
+        <p class="not-member">
+          Not a member? <a href="register.html" class="register-now">Register now</a> <!-- Register link for new members -->
+        </p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Librarian Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Admin</h2>
+            <button onclick="showSection('bookManagement')">Book Management</button>
+            <button onclick="showSection('userLoans')">User Loans</button>
+            <button onclick="showSection('uploadBooks')">Upload Books</button>
+            <button onclick="showSection('reviewManagement')">Review Management</button>
+            <button class="logout" onclick="window.location.href='login.html'">Logout</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Book Management Section -->
+            <div id="bookManagement" class="section">
+                <h2>Book Management</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Book Number</th>
+                            <th>Book Name</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>The Strange Case of Dr. Jekyll and Mr. Hyde</td>
+                            <td>Robert Louis Stevenson</td>
+                            <td>Fiction</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Dracula</td>
+                            <td>Bram Stoker</td>
+                            <td>Horror</td>
+                            <td>Loaned</td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Crime and Punishment</td>
+                            <td>Fyodor Dostoyevsky</td>
+                            <td>Fiction</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Pride and Prejudice</td>
+                            <td>Jane Austen</td>
+                            <td>Romance</td>
+                            <td>Loaned</td>
+                        </tr>
+                        <tr>
+                            <td>005</td>
+                            <td>Alice in Wonderland</td>
+                            <td>Lewis Carroll</td>
+                            <td>Children's Literature</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>006</td>
+                            <td>The Great Gatsby</td>
+                            <td>F. Scott Fitzgerald</td>
+                            <td>Fiction</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>007</td>
+                            <td>The War of the Worlds</td>
+                            <td>H.G. Wells</td>
+                            <td>Science Fiction</td>
+                            <td>Loaned</td>
+                        </tr>
+                        <tr>
+                            <td>008</td>
+                            <td>Great Expectations</td>
+                            <td>Charles Dickens</td>
+                            <td>Fiction</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>009</td>
+                            <td>The Adventure of Sherlock Holmes</td>
+                            <td>Arthur Conan Doyle</td>
+                            <td>Adventure</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>010</td>
+                            <td>The Count of Monte Cristo</td>
+                            <td>Alexandre Dumas, Auguste Maquet</td>
+                            <td>Adventure</td>
+                            <td>Loaned</td>
+                        </tr>
+                        <tr>
+                            <td>011</td>
+                            <td>Treasure Island</td>
+                            <td>Robert Louis Stevenson</td>
+                            <td>Adventure</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>012</td>
+                            <td>The Wonderful Wizard of Oz</td>
+                            <td>L. Frank Baum</td>
+                            <td>Children's Literature</td>
+                            <td>Loaned</td>
+                        </tr>
+                        <tr>
+                            <td>013</td>
+                            <td>Gulliver's Travels</td>
+                            <td>Jonathan Swift</td>
+                            <td>Adventure</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>014</td>
+                            <td>Winnie-the-Pooh</td>
+                            <td>A.A. Milne</td>
+                            <td>Children's Literature</td>
+                            <td>Available</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- User Loans Section -->
+            <div id="userLoans" class="section" style="display: none;">
+                <h2>User Loans</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Book Number</th>
+                            <th>Loan Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alice_007</td>
+                            <td>001</td>
+                            <td>Loaned</td>
+                        </tr>
+                            <td>Ariaaaa</td>
+                            <td>005</td>
+                            <td>Loaned</td>
+                        </tr> 
+                        <td>MikeyCR7</td>
+                        <td>004</td>
+                        <td>Loaned</td>
+                    </tr> 
+                    <td>Nabil</td>
+                    <td>010</td>
+                    <td>Returned</td>
+                </tr> 
+                <td>Michelle59_!</td>
+                <td>008</td>
+                <td>Loaned</td>
+            </tr> 
+            <td>BookWorm121</td>
+            <td>001</td>
+            <td>Returned</td>
+        </tr> 
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Upload Books Section -->
+            <div id="uploadBooks" class="section" style="display: none;">
+                <h2>Upload New Book</h2>
+                <form class="upload-form">
+                    <label>Title:</label>
+                    <input type="text" placeholder="Enter book title" required>
+
+                    <label>Author:</label>
+                    <input type="text" placeholder="Enter author's name" required>
+
+                    <label>ISBN:</label>
+                    <input type="text" placeholder="Enter ISBN" required>
+
+                    <label>Genre:</label>
+                    <select required>
+                        <option value="">Select Genre</option>
+                        <option>Action</option>
+                        <option>Adult</option>
+                        <option>Adventure</option>
+                        <option>Architecture</option>
+                        <option>Arts</option>
+                        <option>Autobiography</option>
+                        <option>Biography</option>
+                        <option>Biological Sciences</option>
+                        <option>Children's Literature</option>
+                        <option>Comic</option>
+                        <option>Computer Science</option>
+                        <option>Cooking</option>
+                        <option>Engineering</option>
+                        <option>Fantasy</option>
+                        <option>Fiction</option>
+                        <option>Finance</option>
+                        <option>Historical</option>
+                        <option>Horror</option>
+                        <option>Humour</option>
+                        <option>Law</option>
+                        <option>Medical</option>
+                        <option>Mystery Thriller</option>
+                        <option>Non-fiction</option>
+                        <option>Poetry</option>
+                        <option>Romance</option>
+                        <option>Science</option>
+                    </select>
+
+                    <label>Upload Book Image:</label>
+                    <input type="file" accept="image/*" required>
+
+                    <button type="submit">Upload Book</button>
+                </form>
+            </div>
+
+            <!-- Review Management Section -->
+            <div id="reviewManagement" class="section" style="display: none;">
+                <h2>Review Management</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Book Number</th>
+                            <th>Review</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alice_007</td>
+                            <td>001</td>
+                            <td>Great read!</td>
+                            <td class="review-status">Pending</td>
+                            <td>
+                                <button class="approve" onclick="handleAction(this, 'approve')">Approve</button>
+                                <button class="dismiss" onclick="handleAction(this, 'dismiss')">Dismiss</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ariaaaa</td>
+                            <td>005</td>
+                            <td>Absolutley amazing would definitely recommend</td>
+                            <td class="review-status">Pending</td>
+                            <td>
+                                <button class="approve" onclick="handleAction(this, 'approve')">Approve</button>
+                                <button class="dismiss" onclick="handleAction(this, 'dismiss')">Dismiss</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>MikeyCR7</td>
+                            <td>004</td>
+                            <td>Was decent worth a read</td>
+                            <td class="review-status">Pending</td>
+                            <td>
+                                <button class="approve" onclick="handleAction(this, 'approve')">Approve</button>
+                                <button class="dismiss" onclick="handleAction(this, 'dismiss')">Dismiss</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div id="popup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <p id="popup-message"></p>
+            <div class="popup-buttons">
+                <button onclick="confirmAction()">Confirm</button>
+                <button onclick="closePopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        let currentButton;
+        let actionType;
+
+        function handleAction(button, action) {
+            currentButton = button;
+            actionType = action;
+            const message = action === 'approve' ? 
+                "Are you sure you want to approve this review?" : 
+                "Are you sure you want to dismiss this review?";
+            document.getElementById('popup-message').textContent = message;
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function confirmAction() {
+            const statusCell = currentButton.closest('tr').querySelector('.review-status');
+            if (actionType === 'approve') {
+                statusCell.textContent = 'Approved';
+                statusCell.style.color = 'green';
+            } else if (actionType === 'dismiss') {
+                statusCell.textContent = 'Dismissed';
+                statusCell.style.color = 'red';
+            }
+            closePopup();
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

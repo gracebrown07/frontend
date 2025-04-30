@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Inter:wght@400;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+  <style>
+body { /*Basic page setup: sets margins, font sizes, flex layout, and background color */
+  margin: 0; /* gives full control of the entire page */
+  font-size: 1rem; /*sets default size, can change individually if needed */ 
+  line-height: 1.6; /*sets default size, can change individually if needed */ 
+  height: 100vh; /* The website will always fill the whole page */
+  display: flex; /* Page will be flexible and responsive */
+  flex-direction: column; /* matches the natural flow of a website */
+  font-family: 'Viaoda Libre', serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box; /* Makes layout easier, without this it makes padding and borders add extra size */
+}
+
+.container {
+      flex: 1; /* Grow and fill available space */
+      display: flex; /* Page will be flexible and responsive */
+      flex-direction: column; /* matches the natural flow of a website */
+      overflow: hidden; /* Hides anything that spills over the sides */
+    }
+
+header {
+      width: 100%; /* stretches across the entire width of the page */
+      background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
+      padding: 30px;
+      display: flex; /* control how child elements move */
+      justify-content: space-between; /* space nav bar */
+      align-items: center; 
+    }
+
+    .title { /* e-book title */
+      font-size: 2rem;
+      font-weight: 700;
+      color: black;
+      font-family: 'Viaoda Libre', serif;
+    }
+
+    .nav { /* navaigation bar container */
+      display: flex; /* nav items will be laid out in a row */
+      gap: 20px; /* gap between items */
+    }
+
+    .nav a, .menu-item > a { /* Targets all anchor links inside .nav and the direct <a> tags inside .menu-item for styling. */
+      text-decoration: none; /* removes underlining from links */
+      color: black;
+      font-size: 1.5rem;
+      display: flex; /* Icon and text are put in a flex container */
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 5px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav a:hover, .menu-item > a:hover { /* This targets the anchor links in .nav and .menu-item when the user hovers over them. */
+      background-color: #6f9fbc;
+    }
+
+    .icon { /* This targets the div.icon inside each <a> to manage spacing between the icon and the text. */
+      margin-right: 8px;
+      margin-top: 4px;
+    }
+
+    .arrow { /* Arrow next to Browse/User */
+      margin-left: 20px;
+      margin-top: 7px;
+      font-size: 1rem;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item { /* This targets the .menu-item class (used for "Browse" and "User") */
+      position: relative;
+    }
+
+    .dropdown { /* This targets the dropdown menu (div.dropdown) that appears when a user clicks on "Browse" or "User". */
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #f3f3f7;
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown a { /*  This targets the anchor links inside the .dropdown (e.g., "Fiction", "Non-fiction"). */
+      color: #333;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover { /*This targets the dropdown links when the user hovers over them. */
+      background-color: #ddd;
+    }
+
+    .menu-item > a.active .arrow { /* This targets the .arrow inside the active link (when a dropdown is open), rotates 180 degrees */
+      transform: rotate(180deg);
+    }
+
+/* bottom content box */
+.content-box {
+  width: 100%; /* Allows width to be flexible on different screens */
+  max-width: 100vw;/* Ensure it doesn’t get too wide */
+  position: relative;  /* Position box without moving other things about */
+  background-color: #F3F3F7; /* Background colour is set to grey */
+  padding: 20px; /* Adds spacing inside the box */
+  display: flex; /* Control how items are arranged */
+  flex-direction: column; /* stack one on top of the other */
+  justify-content: flex-start; /* Aligns to the top */
+  flex: 1; /* Grow to fill available space */
+}
+
+/* My Details Title */
+.content-box h1 { 
+  width: 100%;  
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 20px; /* Adds some space below the title */
+  text-align: center; /* centred within h1 */
+}
+
+/* container that holds all of the user profile information */
+.profile-box {
+  width: 100%;  /* Full width of its container */
+  max-width: 1200px; /* Limit the max width for a better look */
+  margin: 0 auto; /* Center the box horizontally */
+  padding: 20px;
+  height: 650px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Label that says 'My Profile' */
+.profile-picture-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 15px; /* Adds space below the label */
+  margin-top: 35px; /* adds space above */
+  text-align: center; /* Centers the text */
+}
+
+/* The circle box that has 'Add Picture' */
+.profile-picture {
+  width: 120px; /* Slightly larger than before for better visibility */
+  height: 120px; /* Maintains aspect ratio */
+  background: #D9D9D9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  margin: 0 auto; /* Centers the profile picture horizontally */
+  position: relative; /* Positions relative to the container */
+}
+
+/* Profile Picuture image once its added */
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* when button is clicked it takes you to files to select a picture */
+.profile-picture input[type="file"] {
+  display: none;
+}
+
+/* Text inside box before photo has been added */
+.profile-picture-text {
+  font-size: 14px;
+  color: #4C535F;
+  text-align: center;
+  position: absolute; /* Ensures it's centered inside the circle */
+  width: 100%;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Adds subtle shadow to improve visibility on light backgrounds */
+}
+
+/* Profile section as flex container */
+/* Profile section - Flex container with space between columns */
+.profile-details {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 24px; /* Space between left and right columns */
+  justify-content: flex-start; /* Ensure the items are aligned to the left */
+  margin-top: 20px;
+}
+
+/* Left and right sections */
+.details-left, .details-right {
+  flex: 1;
+  min-width: 280px; /* Ensure columns don't get too narrow */
+  box-sizing: border-box; /* Prevent overflow */
+}
+
+/* Group for input fields */
+.details-group {
+  margin-bottom: 16px; /* Adds space between input fields */
+}
+
+/* Styling for input fields */
+.input-box {
+  width: 100%; /* Ensures the input box takes full width of its container */
+  height: 52px;
+  padding: 0 15px;
+  background: #FAFBFC;
+  border: 1px solid #E0E4EC;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #4C535F;
+  font-weight: 500;
+}
+
+.input-box:focus {
+  outline: none;
+  border-color: #8CD9E3;
+  box-shadow: 0 0 0 2px rgba(140, 217, 227, 0.4);
+}
+
+/* Label styling */
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4C535F;
+}
+
+/* Placeholder styling */
+.input-box::placeholder {
+  color: #B0B0B0;
+  font-weight: 400;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  align-items: center; /* align them nicely vertically */
+  gap: 16px; /* space between Reset and Update */
+  margin-top: 24px; /* space above the buttons */
+}
+
+
+/* Update Button styling */
+.button-update {
+  width: 201px;
+  height: 37px;
+  background-color: #F4683C;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Reset Button styling */
+.button-reset-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #4C535F;
+  cursor: pointer; /* make it look clickable */
+  align-self: center; /* ← this aligns it vertically with the button */
+  margin-top: 0; /* ← remove the old margin pushing it too high */
+}
+
+.button-reset {
+  background: none;
+  border: none;
+  color: #4C535F;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 37px; /* Match height to Update button */
+  display: flex;
+  align-items: center;
+}
+
+</style>
+</head>
+<body>
+  <!-- Main container that holds the whole page -->
+  <div class="container">
+    <!-- Header section (top of the page) -->
+    <header>
+      <!-- Website title -->
+      <div class="title" role="heading" aria-level="1">eBook Library</div>
+      <!-- Navigation bar -->
+      <nav class="nav" aria-label="Main navigation">
+      <!-- Browse menu item with dropdown -->
+      <div class="menu-item">
+        <a href="#" class="browse" aria-haspopup="true" aria-expanded="false">
+            <!-- Icon next to "Browse" -->
+            <div class="icon">
+              <img src="bars-solid.svg" alt="Browse Icon" width="20" height="20">
+            </div>
+            Browse
+            <span class="arrow" aria-hidden="true">▼</span> <!-- Arrow indicating dropdown -->
+          </a>
+          <!-- Dropdown list under "Browse" -->
+          <div class="dropdown" aria-labelledby="browse">
+            <a href="#">Fiction</a>
+            <a href="#">Non-fiction</a>
+            <a href="#">Sci-fi</a>
+          </div>
+        </div>
+        <!-- Link to Dashboard (no dropdown) -->
+        <a href="homeRegistered.html" class="Home" role="button">
+          <div class="icon">
+            <img src="house-solid.svg" alt="Home Icon" width="20" height="20">
+          </div>
+          Home
+        </a>
+        <!-- User menu item with dropdown -->
+        <div class="menu-item">
+            <a href="#" class="Profile" aria-haspopup="true" aria-expanded="false">
+            <!-- Icon next to "User" -->
+            <div class="icon">
+              <img src="user-solid.svg" alt="Profile Icon" width="20" height="20">
+            </div>
+            User
+            <span class="arrow" aria-hidden="true">▼</span> <!-- Arrow indicating dropdown -->
+          </a>
+          <!-- Dropdown list under "User" -->
+          <div class="dropdown" aria-labelledby="user">
+            <a href="myDetails.html">My Details</a>
+            <a href="login-security.html">Login & Security</a>
+          </div>
+        </div>
+        <!-- Link to Sign Out (no dropdown) -->
+        <a href="login.html" class="Sign-out" role="button">
+          <div class="icon">
+            <img src="signout.svg" alt="Sign-out Icon" width="20" height="20">
+          </div>
+          Sign Out
+        </a>
+      </nav>
+    </header>
+    <!-- Main content area below the header -->
+    <main class="content-box">
+        <h1>MY DETAILS</h1> <!-- Title -->
+      <!-- Profile Box with Picture Section -->
+    <section class="profile-box">
+          <div class="profile-picture-label">Your Profile Picture</div>
+          <div class="profile-picture" onclick="document.getElementById('profile-picture-input').click();">
+            <input type="file" id="profile-picture-input" accept="image/*" onchange="previewImage(event)">
+            <span class="profile-picture-text">Add Picture</span>
+          </div>
+        
+      
+        <!-- Profile Details Section -->
+        <section class="profile-details">
+          <div class="details-left">
+            <div class="details-group">
+              <label class="label" for="full-name">Full name</label>
+              <input class="input-box" id="full-name" type="text" placeholder="Reinhard Kenson" />
+            </div>
+            <div class="details-group">
+              <label class="label" for="register-number">Register Number</label>
+              <input class="input-box" id="register-number" type="text" placeholder="12345678" />
+            </div>
+          </div>
+      
+          <div class="details-right">
+            <div class="details-group">
+              <label class="label" for="email">Email</label>
+              <input class="input-box" id="email" type="email" placeholder="username@ncl.ac.uk" />
+            </div>
+            <div class="details-group">
+              <label class="label" for="phone-number">Phone number</label>
+              <input class="input-box" id="phone-number" type="tel" placeholder="+44 9952508995" />
+            </div>
+          </div>
+    </section>
+   
+      
+        <!-- Buttons for updating and resetting profile -->
+        <div style="display: flex; gap: 16px; margin-top: 24px;">
+            <div class="button-update">Update</div>
+            <button class="button-reset">Reset</button>
+          </div>                         
+        </section>
+      </main>
+      
+  </div> <!-- End of .container -->
+  <script>
+     document.querySelectorAll('.menu-item > a').forEach(link => { 
+  link.addEventListener('click', function(e) { 
+    e.preventDefault(); // Prevents default action (e.g., following the link)
+
+    const isActive = this.classList.contains('active'); // Checks if the link is active
+
+    // Close all dropdowns
+    document.querySelectorAll('.menu-item > a').forEach(a => {
+      a.classList.remove('active'); // Remove the 'active' class
+      if (a.nextElementSibling) {
+        a.nextElementSibling.style.display = 'none'; // Hide the dropdown
+        a.setAttribute('aria-expanded', 'false'); // Set aria-expanded to false
+      }
+    });
+
+    // Toggle the current dropdown
+    if (!isActive) { 
+      this.classList.add('active'); // Add 'active' class to indicate the dropdown is open
+      if (this.nextElementSibling) {
+        this.nextElementSibling.style.display = 'block'; // Show the dropdown
+        this.setAttribute('aria-expanded', 'true'); // Set aria-expanded to true
+      }
+    }
+  });
+});
+
+// Close dropdown if clicked outside
+document.addEventListener('click', function(e) { 
+  if (!e.target.closest('.menu-item')) { 
+    document.querySelectorAll('.menu-item > a').forEach(a => {
+      a.classList.remove('active'); // Remove the 'active' class
+      if (a.nextElementSibling) {
+        a.nextElementSibling.style.display = 'none'; // Hide the dropdown
+        a.setAttribute('aria-expanded', 'false'); // Set aria-expanded to false
+      }
+    });
+  }
+});
+  </script>
+</body>
+</html>
