@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Inter:wght@400;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+
   <style>
 body { /*Basic page setup: sets margins, font sizes, flex layout, and background color */
   margin: 0; /* gives full control of the entire page */
@@ -227,6 +227,23 @@ header {
   word-wrap: break-word;
 }
 
+.book-button {
+      background-color: #6f9fbc;
+      color: white;
+      padding: 10px;
+      font-size: 1rem;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .book-button:hover {
+      background-color: #5a8cab;
+    }
+    
+
 </style>
 </head>
 <body>
@@ -236,6 +253,8 @@ header {
     <header>
       <!-- Website title -->
       <div class="title" role="heading" aria-level="1">eBook Library</div>
+      <a href="admin.html" class="admin-button">Admin</a>
+
       <!-- Search bar container -->
       <div class="search-container">
         <input type="text" placeholder="Search..." aria-label="Search">
@@ -293,121 +312,20 @@ header {
       </nav>
     </header>
     <!-- Main content area below the header -->
+   
     <main class="content-box">
-        <div class="book-container">
-            <div class="book-box">
-              <div class="book-item">
-                <img class="book-img" src="https://www.gutenberg.org/cache/epub/43/pg43.cover.medium.jpg" />
-                <div class="book-details">
-                  <div class="book-title">The Strange Case of Dr. Jekyll and Mr. Hyde</div>
-                  <div class="book-author">Robert Louis Stevenson</div>
-                </div>
-              </div>
-      
-              <div class="book-item">
-                <img class="book-img" src="https://www.gutenberg.org/cache/epub/345/pg345.cover.medium.jpg" />
-                <div class="book-details">
-                  <div class="book-title">Dracula</div>
-                  <div class="book-author">Bram Stoker</div>
-                </div>
-              </div>
-      
-              <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/2554/pg2554.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Crime and Punishment</div>
-                    <div class="book-author">Fyodor Dostoyevsky</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Pride and Prejudice</div>
-                    <div class="book-author">Jane Austen</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/11/pg11.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Alice's Adventures in Wonderland</div>
-                    <div class="book-author">Lewis Carroll</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/64317/pg64317.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Great Gatsby</div>
-                    <div class="book-author">F. Scott Fitzgerald</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/36/pg36.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The War of the Worlds</div>
-                    <div class="book-author">H. G. Wells</div>
-                  </div>
-                </div>
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/67098/pg67098.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Winnie-the-Pooh</div>
-                    <div class="book-author">A. A. Milne</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1400/pg1400.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Great Expectations</div>
-                    <div class="book-author">Charles Dickens</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1661/pg1661.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Adventures of Sherlock Holmes</div>
-                    <div class="book-author">Arthur Conan Doyle</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/1184/pg1184.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Count of Monte Cristo</div>
-                    <div class="book-author">Alexandre Dumas and Auguste Maquet</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/120/pg120.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Treasure Island</div>
-                    <div class="book-author">Robert Louis Stevenson</div>
-                  </div>
-                </div>
-                
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/55/pg55.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">The Wonderful Wizard of Oz</div>
-                    <div class="book-author">L. Frank Baum</div>
-                  </div>
-                </div> 
-      
-                <div class="book-item">
-                  <img class="book-img" src="https://www.gutenberg.org/cache/epub/829/pg829.cover.medium.jpg" />
-                  <div class="book-details">
-                    <div class="book-title">Gulliver's Travels into Several Remote Nations of the World</div>
-                    <div class="book-author">Jonathan Swift</div>
-                  </div>
-                </div> 
+      <div class="book-container">
+        <!-- Books will be inserted dynamically here -->
+        <a href="bookBrowse.html" class="book-item">
+          <img src="https://www.gutenberg.org/cache/epub/43/pg43.cover.medium.jpg" alt="Book Cover" class="book-img">
+          <div class="book-details">
+            <div class="book-title">Harry Potter</div>
+            <div class="book-author">JK Rowling</div>
+          </div>
+        </a> <!-- Closing the anchor tag here -->
+      </div>
     </main>
+    
   </div> <!-- End of .container -->
   <script>
      document.querySelectorAll('.menu-item > a').forEach(link => { 
@@ -448,6 +366,51 @@ document.addEventListener('click', function(e) {
     });
   }
 });
+
+
+  // Fetch the list of books from your API
+  fetch('http://localhost:8080/books')
+      .then(response => response.json())  // Parse the JSON response
+      .then(data => {
+        const bookContainer = document.querySelector('.book-container');  // Get the container to hold the books
+        
+        // Loop over each book and create the HTML elements dynamically
+        data.forEach(book => {
+          const bookItem = document.createElement('div');
+          bookItem.classList.add('book-item');
+
+          // Create the image element for the book cover
+          const bookImg = document.createElement('img');
+          bookImg.classList.add('book-img');
+          bookImg.src = `${book.coverImage}`;  // Set the cover image from the API data
+
+          // Create the details container
+          const bookDetails = document.createElement('div');
+          bookDetails.classList.add('book-details');
+
+          // Create the book title
+          const bookTitle = document.createElement('div');
+          bookTitle.classList.add('book-title');
+          bookTitle.textContent = book.title;  // Set the title from the API data
+
+          // Create the book author
+          const bookAuthor = document.createElement('div');
+          bookAuthor.classList.add('book-author');
+          bookAuthor.textContent = book.author;  // Set the author from the API data
+
+          // Append the book details and image to the book item
+          bookDetails.appendChild(bookTitle);
+          bookDetails.appendChild(bookAuthor);
+          bookItem.appendChild(bookImg);
+          bookItem.appendChild(bookDetails);
+
+          // Append the book item to the book container
+          bookContainer.appendChild(bookItem);
+        });
+      })
+      .catch(error => console.error('Error fetching books:', error));  // Handle any errors in fetching
   </script>
+
+
 </body>
 </html>

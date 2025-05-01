@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBook Review</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="revstyle.css">
+    <style>
+        /* General body styling: full-screen flex layout, gradient background, white font */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Shared card styling for the form and success page */
+.container, #successPage {
+    background-color: #9c73e4; /* Purple card background */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 400px;
+    text-align: center;
+}
+
+/* Review input textarea */
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    resize: none;
+    font-size: 16px;
+}
+
+/* Submit and close buttons */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #5e35b1; /* Dark purple */
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Hover state for buttons */
+button:hover {
+    background-color: #4527a0;
+}
+
+/* Review display section */
+.reviews-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+/* Each individual review */
+.review {
+    background-color: #b39ddb; /* Light purple */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: #333;
+    font-style: italic;
+}
+
+/* Class to hide success page initially */
+.hidden {
+    display: none;
+}
+    </style>
+</head>
+<body>
+
+<!-- Main container for the review form -->
+<div class="container">
+    <h1>Leave a Review</h1>
+    
+    <!-- Text area input for user to write a review -->
+    <textarea id="reviewText" placeholder="Write your review..."></textarea>
+    
+    <!-- Button to submit the review -->
+    <button id="submitBtn">Submit Review</button>
+
+    <!-- Static section showing example user reviews -->
+    <div class="reviews-section">
+        <h2>See what other users said:</h2>
+        <div class="review">"A captivating story, highly recommend!"</div>
+        <div class="review">"The characters were well developed, 5 stars!"</div>
+        <div class="review">"Not my favorite, but still a good read."</div>
+    </div>
+</div>
+
+<!-- Hidden success message shown after submitting a review -->
+<div id="successPage" class="hidden">
+    <h1>Your comment was successfully posted!</h1>
+    <p>We are reviewing your submission.</p>
+    <!-- Button to close the review page -->
+    <a href="myBooks.html" id="closeBtn">Close Review Page</a>
+</div>
+
+<!-- Script to handle form interaction -->
+<script>
+    const submitBtn = document.getElementById('submitBtn');
+    const successPage = document.getElementById('successPage');
+    const container = document.querySelector('.container');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // On submit: hide form, show success page
+    submitBtn.addEventListener('click', () => {
+        container.style.display = 'none';
+        successPage.classList.remove('hidden');
+    });
+
+    // On close: close the tab or popup
+    closeBtn?.addEventListener('click', () => {
+        window.close();
+    });
+</script>
+
+</body>
+</html>

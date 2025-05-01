@@ -1,247 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eBook Library</title>
-  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Inter:wght@400;700&family=Times+New+Roman&display=swap" rel="stylesheet">
-  <style>
-    /* Basic page setup */
-    body {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Viaoda Libre', serif;
-      overflow: scroll; 
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    .container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: scroll;
-    }
-
-    header {
-      width: 100%;
-      background: linear-gradient(141deg, #7FC9E9 0%, #DCC4FA 0%, #8CD9E3 100%);
-      padding: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: black;
-    }
-
-    .nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: black;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      border-radius: 5px;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .nav a:hover {
-      background-color: #6f9fbc;
-    }
-
-    .icon {
-      margin-right: 8px;
-      margin-top: 4px;
-    }
-
-    .arrow {
-      margin-left: 20px;
-      margin-top: 7px;
-      font-size: 1rem;
-      transform: rotate(0deg);
-      transition: transform 0.3s ease;
-    }
-
-    .menu-item {
-      position: relative;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #f3f3f7;
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    .dropdown a {
-      color: #333;
-      padding: 10px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown a:hover {
-      background-color: #ddd;
-    }
-
-    .dropdown-hidden {
-      display: none;
-    }
-
-    .menu-item > a.active .arrow {
-      transform: rotate(180deg);
-    }
-
-    .search-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .search-container input[type="text"] {
-      padding: 8px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .search-container button {
-      padding: 8px 16px;
-      font-size: 1rem;
-      border: none;
-      background-color: #6f9fbc;
-      color: black;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .search-container button:hover {
-      background-color: #5a8cab;
-    }
-    
-    /* Additional styles to fit your layout */
-    .content-box {
-      width: 100%;
-      background-color: #F3F3F7;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-    }
-
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="title" role="heading" aria-level="1">eBook Library</div>
-      <div class="search-container">
-        <input type="text" placeholder="Search..." aria-label="Search books">
-        <button type="submit" aria-label="Submit Search Query">Search</button>
-      </div>
-      <nav class="nav" aria-label="Main navigation">
-        <div class="menu-item">
-          <a href="#" class="browse" aria-haspopup="true" aria-expanded="false" aria-controls="browse-menu">
-            <div class="icon">
-              <img src="bars-solid.svg" alt="Browse Icon" width="20" height="20">
-            </div>
-            Browse
-            <span class="arrow" aria-hidden="true">▼</span>
-          </a>
-          <div class="dropdown" id="browse-menu" aria-labelledby="browse">
-            <a href="#" aria-label="Browse Fiction">Fiction</a>
-            <a href="#" aria-label="Browse Non-fiction">Non-fiction</a>
-            <a href="#" aria-label="Browse Sci-fi">Sci-fi</a>
+<main class="content-box">
+  <div class="book-container">
+      <div class="book-box">
+        <div class="book-item">
+          <img class="book-img" src="https://www.gutenberg.org/cache/epub/43/pg43.cover.medium.jpg" />
+          <div class="book-details">
+            <div class="book-title">The Strange Case of Dr. Jekyll and Mr. Hyde</div>
+            <div class="book-author">Robert Louis Stevenson</div>
           </div>
         </div>
-        <a href="homeRegistered.html" class="Home" role="button" aria-label="Go to Home Page">
-          <div class="icon">
-            <img src="house-solid.svg" alt="Home Icon" width="20" height="20">
-          </div>
-          Home
-        </a>
-      </nav>
-    </header>
 
-    <div class="content-box">
-      <main>
-        <div class="menu-item">
-          <a href="#" class="booksMenu" aria-haspopup="true" aria-expanded="false" aria-controls="books-menu">
-            <div class="books-link-content">
-              <div class="icon">
-                <img src="user-solid.svg" alt="Books Menu Icon" width="20" height="20">
-              </div>
-              MY BOOKS
-              <span class="arrow" aria-hidden="true">▼</span>
-            </div>
-          </a>
-          <div class="dropdown" id="books-menu">
-            <a href="wishlist.html" aria-label="View Wishlist">WISHLIST</a>
+        <div class="book-item">
+          <img class="book-img" src="https://www.gutenberg.org/cache/epub/345/pg345.cover.medium.jpg" />
+          <div class="book-details">
+            <div class="book-title">Dracula</div>
+            <div class="book-author">Bram Stoker</div>
           </div>
         </div>
-      </main> 
-    </div>
-  </div>
 
-  <script>
-    // Toggle dropdown visibility when menu item is clicked
-    document.querySelectorAll('.menu-item > a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent default link behavior
+        <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/2554/pg2554.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">Crime and Punishment</div>
+              <div class="book-author">Fyodor Dostoyevsky</div>
+            </div>
+          </div>
 
-        const isActive = this.classList.contains('active');
-        const dropdown = this.nextElementSibling; // Get the dropdown
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">Pride and Prejudice</div>
+              <div class="book-author">Jane Austen</div>
+            </div>
+          </div>
 
-        // Close all dropdowns by removing 'active' and hiding the dropdowns
-        document.querySelectorAll('.menu-item > a').forEach(a => {
-          a.classList.remove('active');
-          const otherDropdown = a.nextElementSibling;
-          if (otherDropdown) {
-            otherDropdown.classList.add('dropdown-hidden');
-          }
-        });
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/11/pg11.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">Alice's Adventures in Wonderland</div>
+              <div class="book-author">Lewis Carroll</div>
+            </div>
+          </div>
 
-        // If the clicked item wasn't active, activate it and show the dropdown
-        if (!isActive && dropdown) {
-          this.classList.add('active');
-          dropdown.classList.remove('dropdown-hidden');
-        }
-      });
-    });
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/64317/pg64317.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">The Great Gatsby</div>
+              <div class="book-author">F. Scott Fitzgerald</div>
+            </div>
+          </div>
 
-    // Close dropdowns if clicked outside of the menu
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.menu-item')) {
-        document.querySelectorAll('.menu-item > a').forEach(a => {
-          a.classList.remove('active');
-          const dropdown = a.nextElementSibling;
-          if (dropdown) {
-            dropdown.classList.add('dropdown-hidden');
-          }
-        });
-      }
-    });
-  </script>
-</body>
-</html>
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/36/pg36.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">The War of the Worlds</div>
+              <div class="book-author">H. G. Wells</div>
+            </div>
+          </div>
+
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/67098/pg67098.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">Winnie-the-Pooh</div>
+              <div class="book-author">A. A. Milne</div>
+            </div>
+          </div> 
+
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/1400/pg1400.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">Great Expectations</div>
+              <div class="book-author">Charles Dickens</div>
+            </div>
+          </div> 
+
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/1661/pg1661.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">The Adventures of Sherlock Holmes</div>
+              <div class="book-author">Arthur Conan Doyle</div>
+            </div>
+          </div> 
+
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/1184/pg1184.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">The Count of Monte Cristo</div>
+              <div class="book-author">Alexandre Dumas and Auguste Maquet</div>
+            </div>
+          </div> 
+
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/120/pg120.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">Treasure Island</div>
+              <div class="book-author">Robert Louis Stevenson</div>
+            </div>
+          </div>
+          
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/55/pg55.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">The Wonderful Wizard of Oz</div>
+              <div class="book-author">L. Frank Baum</div>
+            </div>
+          </div> 
+
+          <div class="book-item">
+            <img class="book-img" src="https://www.gutenberg.org/cache/epub/829/pg829.cover.medium.jpg" />
+            <div class="book-details">
+              <div class="book-title">Gulliver's Travels into Several Remote Nations of the World</div>
+              <div class="book-author">Jonathan Swift</div>
+            </div>
+          </div> 
